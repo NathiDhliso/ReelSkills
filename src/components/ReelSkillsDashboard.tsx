@@ -7,6 +7,7 @@ import { getSupabaseClient } from '../lib/auth';
 import { AddSkillModal } from './AddSkillModal';
 import { VideoUploadModal } from './VideoUploadModal';
 import { SkillDetailModal } from './SkillDetailModal';
+import { ScorePreview } from './ScorePreview';
 import { ErrorHandler, withRetry } from '../lib/errorHandling';
 import { Target, Plus, Brain, Star, Award, Video, CheckCircle, Upload, Play, Edit, AlertCircle, Sparkles, Trash2, RefreshCw } from 'lucide-react';
 
@@ -519,6 +520,15 @@ const ReelSkillsDashboard: React.FC = () => {
           <p className="text-slate-400 text-base sm:text-lg">
             Showcase your expertise with video demonstrations
           </p>
+        </div>
+
+        {/* Score Preview Section */}
+        <div className="mb-8">
+          <ScorePreview 
+            skills={skills}
+            onAddSkill={() => setIsModalOpen(true)}
+            onUploadVideo={handleHeroUploadClick}
+          />
         </div>
 
         {/* MERGED HERO SECTION - Upload Button + Current Skill Display */}
