@@ -138,10 +138,10 @@ export const AddSkillModal: React.FC<AddSkillModalProps> = ({ isOpen, onClose, o
                   <input
                     id="skill-name"
                     type="text"
-                    className={`w-full px-3 sm:px-4 py-3 bg-slate-700/50 border rounded-xl text-white placeholder-slate-400 focus:ring-2 focus:ring-blue-500/20 transition-all text-base ${
+                    className={`w-full px-3 sm:px-4 py-3 bg-slate-700/50 border rounded-xl text-white placeholder-slate-400 focus:ring-2 focus:ring-primary-500/20 transition-all text-base ${
                       validationErrors.name 
-                        ? 'border-red-500/50 focus:border-red-500/50' 
-                        : 'border-slate-600/50 focus:border-blue-500/50'
+                        ? 'border-error-500/50 focus:border-error-500/50' 
+                        : 'border-slate-600/50 focus:border-primary-500/50'
                     }`}
                     value={name}
                     onChange={(e) => handleNameChange(e.target.value)}
@@ -153,8 +153,8 @@ export const AddSkillModal: React.FC<AddSkillModalProps> = ({ isOpen, onClose, o
                   />
                   {validationErrors.name && (
                     <div className="flex items-center gap-2 mt-2">
-                      <AlertTriangle size={14} className="text-red-400" />
-                      <p className="text-red-300 text-xs">{validationErrors.name}</p>
+                      <AlertTriangle size={14} className="text-error-500" />
+                      <p className="text-error-400 text-xs">{validationErrors.name}</p>
                     </div>
                   )}
                   <p className="text-slate-400 text-xs mt-1">
@@ -176,9 +176,9 @@ export const AddSkillModal: React.FC<AddSkillModalProps> = ({ isOpen, onClose, o
                           type="button"
                           onClick={() => setCategory(cat.value)}
                           disabled={isSaving}
-                          className={`p-4 rounded-xl border transition-all text-left disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-blue-500/20 ${
+                          className={`p-4 rounded-xl border transition-all text-left disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-primary-500/20 ${
                             category === cat.value
-                              ? 'border-blue-500/50 bg-blue-500/20 text-blue-300'
+                              ? 'border-primary-500/50 bg-primary-500/20 text-primary-300'
                               : 'border-slate-600/50 bg-slate-700/30 text-slate-300 hover:border-slate-500/50 hover:bg-slate-700/50'
                           }`}
                           aria-pressed={category === cat.value}
@@ -206,9 +206,9 @@ export const AddSkillModal: React.FC<AddSkillModalProps> = ({ isOpen, onClose, o
                         type="button"
                         onClick={() => setProficiency(prof.value)}
                         disabled={isSaving}
-                        className={`w-full p-3 rounded-lg border transition-all text-left disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-blue-500/20 ${
+                        className={`w-full p-3 rounded-lg border transition-all text-left disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-primary-500/20 ${
                           proficiency === prof.value
-                            ? 'border-blue-500/50 bg-blue-500/20 text-blue-300'
+                            ? 'border-primary-500/50 bg-primary-500/20 text-primary-300'
                             : 'border-slate-600/50 bg-slate-700/30 text-slate-300 hover:border-slate-500/50 hover:bg-slate-700/50'
                         }`}
                         aria-pressed={proficiency === prof.value}
@@ -223,7 +223,7 @@ export const AddSkillModal: React.FC<AddSkillModalProps> = ({ isOpen, onClose, o
                 </div>
 
                 {/* Help Text */}
-                <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4">
+                <div className="bg-primary-500/10 border border-primary-500/20 rounded-xl p-4">
                   <h4 className="font-semibold text-white mb-2 text-sm">💡 Skill Tips</h4>
                   <ul className="text-xs text-slate-300 space-y-1">
                     <li>• Be specific (e.g., "React.js" instead of "Frontend")</li>
@@ -239,7 +239,7 @@ export const AddSkillModal: React.FC<AddSkillModalProps> = ({ isOpen, onClose, o
                 <Button 
                   type="submit"
                   disabled={isSaving || !name.trim() || Object.keys(validationErrors).length > 0}
-                  className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 disabled:from-slate-600 disabled:to-slate-700 py-3 text-base"
+                  className="w-full bg-primary-600 hover:bg-primary-700 text-white disabled:bg-slate-600 py-3 text-base"
                 >
                   {isSaving ? (
                     <>

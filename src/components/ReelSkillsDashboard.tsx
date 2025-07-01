@@ -446,7 +446,7 @@ const ReelSkillsDashboard: React.FC = () => {
     <Button
       onClick={fetchSkills}
       variant="outline"
-      className="border-blue-500/30 text-blue-300 hover:bg-blue-500/10"
+      className="border-primary-500/30 text-primary-400 hover:bg-primary-500/10"
       disabled={loading}
     >
       <RefreshCw size={16} className={`mr-2 ${loading ? 'animate-spin' : ''}`} />
@@ -463,19 +463,19 @@ const ReelSkillsDashboard: React.FC = () => {
       }}>
         <div className="text-center max-w-sm mx-auto">
           <div className="bg-slate-800/20 backdrop-blur-sm border border-slate-700/20 rounded-xl p-6">
-            <AlertCircle size={48} className="text-yellow-400 mx-auto mb-4" />
+            <AlertCircle size={48} className="text-warning-500 mx-auto mb-4" />
             <h2 className="text-xl font-bold text-white mb-2">Profile Setup Required</h2>
             <p className="text-slate-400 mb-6 text-sm">
               We need to set up your profile to get started with ReelSkills.
             </p>
             {error && (
-              <div className="bg-red-500/20 border border-red-500/30 rounded-lg p-3 mb-4">
-                <p className="text-red-300 text-sm">{error}</p>
+              <div className="bg-error-500/20 border border-error-500/30 rounded-lg p-3 mb-4">
+                <p className="text-error-400 text-sm">{error}</p>
               </div>
             )}
             <Button 
               onClick={handleCreateProfile}
-              className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700"
+              className="w-full bg-primary-600 hover:bg-primary-700 text-white"
               disabled={creatingProfile}
             >
               {creatingProfile ? (

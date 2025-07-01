@@ -121,9 +121,9 @@ export const SkillDetailModal: React.FC<SkillDetailModalProps> = ({
 
   const getAIRatingColor = (rating?: number) => {
     if (!rating) return 'text-slate-400';
-    if (rating >= 4) return 'text-green-400';
-    if (rating >= 3) return 'text-yellow-400';
-    return 'text-red-400';
+    if (rating >= 4) return 'text-success-500';
+    if (rating >= 3) return 'text-warning-500';
+    return 'text-error-500';
   };
 
   // Delete Confirmation Modal
@@ -135,8 +135,8 @@ export const SkillDetailModal: React.FC<SkillDetailModalProps> = ({
         <Dialog.Panel className="w-full max-w-md bg-slate-800/95 backdrop-blur-sm border border-slate-700/50 rounded-xl shadow-2xl">
           <div className="p-6">
             <div className="flex items-center gap-4 mb-4">
-              <div className="w-12 h-12 bg-red-500/20 rounded-full flex items-center justify-center">
-                <AlertTriangle size={24} className="text-red-400" />
+              <div className="w-12 h-12 bg-error-500/20 rounded-full flex items-center justify-center">
+                <AlertTriangle size={24} className="text-error-500" />
               </div>
               <div>
                 <h3 className="text-lg font-bold text-white">Delete Skill</h3>
@@ -161,7 +161,7 @@ export const SkillDetailModal: React.FC<SkillDetailModalProps> = ({
               <Button
                 onClick={handleDelete}
                 disabled={isDeleting}
-                className="flex-1 bg-red-600 hover:bg-red-700 text-white"
+                className="flex-1 bg-error-600 hover:bg-error-700 text-white"
               >
                 {isDeleting ? (
                   <>
@@ -202,7 +202,7 @@ export const SkillDetailModal: React.FC<SkillDetailModalProps> = ({
                       variant="outline"
                       size="small"
                       onClick={() => setIsEditing(true)}
-                      className="border-blue-500/30 text-blue-300 hover:bg-blue-500/10"
+                      className="border-primary-500/30 text-primary-400 hover:bg-primary-500/10"
                       disabled={isSaving}
                     >
                       <Edit size={14} className="mr-1" />
@@ -213,7 +213,7 @@ export const SkillDetailModal: React.FC<SkillDetailModalProps> = ({
                         variant="outline"
                         size="small"
                         onClick={() => setShowDeleteConfirm(true)}
-                        className="border-red-500/30 text-red-300 hover:bg-red-500/10"
+                        className="border-error-500/30 text-error-400 hover:bg-error-500/10"
                         disabled={isSaving}
                       >
                         <Trash2 size={14} className="mr-1" />
@@ -239,14 +239,14 @@ export const SkillDetailModal: React.FC<SkillDetailModalProps> = ({
                 <div className="flex items-center justify-between mb-3">
                   <h3 className="text-lg font-semibold text-white">Proficiency Level</h3>
                   <div className="flex items-center gap-2">
-                    <Star size={16} className="text-yellow-400" />
-                    <span className="text-yellow-400 font-medium capitalize">{skill.proficiency}</span>
+                    <Star size={16} className="text-warning-500" />
+                    <span className="text-warning-500 font-medium capitalize">{skill.proficiency}</span>
                   </div>
                 </div>
                 <p className="text-slate-300 text-sm mb-3">{getProficiencyDescription(skill.proficiency)}</p>
                 <div className="w-full bg-slate-600/50 rounded-full h-3">
                   <div 
-                    className="bg-gradient-to-r from-blue-500 to-cyan-400 h-3 rounded-full transition-all duration-500"
+                    className="bg-primary-500 h-3 rounded-full transition-all duration-500"
                     style={{ 
                       width: `${
                         skill.proficiency === 'beginner' ? 20 :
@@ -262,7 +262,7 @@ export const SkillDetailModal: React.FC<SkillDetailModalProps> = ({
               {/* Experience & Verification */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="bg-slate-700/30 rounded-xl p-4 text-center">
-                  <Calendar size={24} className="text-blue-400 mx-auto mb-2" />
+                  <Calendar size={24} className="text-primary-500 mx-auto mb-2" />
                   <div className="text-2xl font-bold text-white">
                     {isEditing ? (
                       <input
@@ -282,13 +282,13 @@ export const SkillDetailModal: React.FC<SkillDetailModalProps> = ({
                 </div>
 
                 <div className="bg-slate-700/30 rounded-xl p-4 text-center">
-                  <Users size={24} className="text-green-400 mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-green-300">{skill.endorsements}</div>
+                  <Users size={24} className="text-success-500 mx-auto mb-2" />
+                  <div className="text-2xl font-bold text-success-400">{skill.endorsements}</div>
                   <div className="text-sm text-slate-400">Endorsements</div>
                 </div>
 
                 <div className="bg-slate-700/30 rounded-xl p-4 text-center">
-                  <Award size={24} className={skill.verified ? "text-emerald-400" : "text-slate-400"} />
+                  <Award size={24} className={skill.verified ? "text-success-500" : "text-slate-400"} />
                   <div className="text-sm font-medium text-white">
                     {skill.verified ? 'Verified' : 'Not Verified'}
                   </div>
@@ -302,7 +302,7 @@ export const SkillDetailModal: React.FC<SkillDetailModalProps> = ({
               {skill.ai_rating && (
                 <div className="bg-slate-700/30 rounded-xl p-4">
                   <div className="flex items-center gap-3 mb-3">
-                    <TrendingUp size={20} className="text-purple-400" />
+                    <TrendingUp size={20} className="text-primary-500" />
                     <h3 className="text-lg font-semibold text-white">AI ReelSkill Assessment</h3>
                     <div className="flex items-center gap-1">
                       {[...Array(5)].map((_, i) => (
@@ -327,7 +327,7 @@ export const SkillDetailModal: React.FC<SkillDetailModalProps> = ({
               {/* Description */}
               <div className="bg-slate-700/30 rounded-xl p-4">
                 <div className="flex items-center gap-3 mb-3">
-                  <FileText size={20} className="text-blue-400" />
+                  <FileText size={20} className="text-primary-500" />
                   <h3 className="text-lg font-semibold text-white">Description</h3>
                 </div>
                 {isEditing ? (
@@ -335,7 +335,7 @@ export const SkillDetailModal: React.FC<SkillDetailModalProps> = ({
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     placeholder="Describe your experience with this skill..."
-                    className="w-full h-24 bg-slate-600/50 border border-slate-500/50 rounded-lg p-3 text-white placeholder-slate-400 resize-none focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/20"
+                    className="w-full h-24 bg-slate-600/50 border border-slate-500/50 rounded-lg p-3 text-white placeholder-slate-400 resize-none focus:border-primary-500/50 focus:ring-2 focus:ring-primary-500/20"
                     disabled={isSaving}
                   />
                 ) : (
@@ -349,10 +349,10 @@ export const SkillDetailModal: React.FC<SkillDetailModalProps> = ({
               <div className="bg-slate-700/30 rounded-xl p-4">
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-3">
-                    <Video size={20} className="text-red-400" />
+                    <Video size={20} className="text-primary-500" />
                     <h3 className="text-lg font-semibold text-white">ReelSkill Demonstration</h3>
                     {skill.video_verified && (
-                      <div className="flex items-center gap-1 text-emerald-400">
+                      <div className="flex items-center gap-1 text-success-500">
                         <Award size={16} />
                         <span className="text-sm">AI Verified</span>
                       </div>
@@ -362,7 +362,7 @@ export const SkillDetailModal: React.FC<SkillDetailModalProps> = ({
                     <Button
                       size="small"
                       onClick={() => setShowVideoUpload(true)}
-                      className="bg-purple-600/80 hover:bg-purple-700/80"
+                      className="bg-primary-600 hover:bg-primary-700 text-white"
                     >
                       <Upload size={14} className="mr-1" />
                       {skill.video_demo_url ? 'Update' : 'Add'} ReelSkill
@@ -376,7 +376,7 @@ export const SkillDetailModal: React.FC<SkillDetailModalProps> = ({
                     value={videoUrl}
                     onChange={(e) => setVideoUrl(e.target.value)}
                     placeholder="https://youtube.com/watch?v=..."
-                    className="w-full bg-slate-600/50 border border-slate-500/50 rounded-lg p-3 text-white placeholder-slate-400 focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/20"
+                    className="w-full bg-slate-600/50 border border-slate-500/50 rounded-lg p-3 text-white placeholder-slate-400 focus:border-primary-500/50 focus:ring-2 focus:ring-primary-500/20"
                     disabled={isSaving}
                   />
                 ) : skill.video_demo_url ? (
@@ -386,7 +386,7 @@ export const SkillDetailModal: React.FC<SkillDetailModalProps> = ({
                         href={skill.video_demo_url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-blue-400 hover:text-blue-300 text-sm"
+                        className="flex items-center gap-2 text-primary-400 hover:text-primary-300 text-sm"
                       >
                         <Play size={16} />
                         Watch ReelSkill Demo
@@ -406,7 +406,7 @@ export const SkillDetailModal: React.FC<SkillDetailModalProps> = ({
               </div>
 
               {/* Learning Recommendations */}
-              <div className="bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/20 rounded-xl p-4">
+              <div className="bg-primary-500/5 border border-primary-500/20 rounded-xl p-4">
                 <h3 className="text-lg font-semibold text-white mb-3">Next Steps</h3>
                 <div className="space-y-2 text-sm text-slate-300">
                   {skill.proficiency === 'beginner' && (
@@ -458,7 +458,7 @@ export const SkillDetailModal: React.FC<SkillDetailModalProps> = ({
                 <Button 
                   onClick={handleSave}
                   disabled={isSaving}
-                  className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 disabled:from-slate-600 disabled:to-slate-700"
+                  className="bg-primary-600 hover:bg-primary-700 text-white disabled:bg-slate-600"
                 >
                   {isSaving ? (
                     <>
